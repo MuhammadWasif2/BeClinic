@@ -10,6 +10,62 @@
 
   <style>
     /* Sidebar cart styling */
+
+     .nav-bar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #0d1a4a;
+        color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+      .logo img {
+      height: 50px;
+    }
+     .site-title {
+      color: #2a6496;
+      font-weight: 700;
+      margin: 0;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 80px;
+      align-items: center;
+      margin: 0;
+      padding-right: 130px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+     .nav-links a:hover, .nav-links a.active {
+      color: #2a6496;
+    }
+    
+    .buy-btn {
+      background-color: #2a6496;
+      color: white !important;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    
+    .buy-btn:hover {
+      background-color: #1c4b75;
+    }
     .cart-sidebar {
       position: fixed;
       top: 0;
@@ -98,7 +154,8 @@
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="what_we_offer.html" class="active">What We Offer</a></li>
-      <li><a href="checkout.html">Cart</a></li>
+      <li><a href="../Assignment1/checkout.html">Cart</a></li>
+
     </ul>
   </nav>
 

@@ -1,0 +1,63 @@
+ body {
+      background-color: #f5f9ff;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #071041;
+      padding: 15px 40px;
+      color: white;
+    }
+
+    .nav-links li {
+      display: inline;
+      margin: 0 10px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      margin-top: 80px;
+    }
+
+    .card {
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .btn-primary {
+      background-color: #2a6496;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #1e4b72;
+    }
+
+    table {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    thead {
+      background-color: #071041;
+      color: white;
+    }
+
+    .footer {
+      background-color: #071041;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 80px;
+    }
