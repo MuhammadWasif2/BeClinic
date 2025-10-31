@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - BeClinic Pharmacy</title>
+  <link rel="stylesheet" href="checkout.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Bootstrap optional — you can keep it or remove if you aren't using bootstrap classes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+ <nav class="nav-bar">
+    <div class="logo">
+      <div style="width: 50px; height: 50px; background: #2a6496; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">BC</div>
+      <h1 class="site-title">BECLINIC</h1>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="what_we_offer.html" class="active">Products</a></li>
+      <li><a href="checkout.html">Cart</a></li>
+    </ul>
+  </nav>
+
+  <!-- CHECKOUT CARD -->
+  <div class="checkout-container">
+    <!-- LEFT: FORM -->
+    <div class="checkout-form">
+      <h2>Checkout</h2>
+
+      <!-- start form -->
+      <form id="checkoutForm">
+        <div class="input-group">
+          <i class="fa fa-user"></i>
+          <input type="text" placeholder="Full Name" name="fullname" required />
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-envelope"></i>
+          <input type="email" placeholder="Email Address" name="email" required />
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-location-dot"></i>
+          <textarea placeholder="Shipping Address" name="address" required></textarea>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-credit-card"></i>
+          <select name="payment" required>
+            <option value="">Payment Method</option>
+            <option value="credit">Credit Card</option>
+            <option value="paypal">PayPal</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn">Place Order</button>
+
+        <div class="secure">
+          <i class="fa fa-shield-alt"></i> Secure Checkout
+          <div class="payment-icons">
+            <i class="fa-brands fa-cc-visa"></i>
+            <i class="fa-brands fa-cc-mastercard"></i>
+            <i class="fa-brands fa-cc-amex"></i>
+            <i class="fa-brands fa-paypal"></i>
+          </div>
+        </div>
+      </form>
+      <!-- end form -->
+    </div>
+
+    <!-- RIGHT: ORDER SUMMARY -->
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+
+      <div class="item">
+        <div class="item-left">
+          <span class="item-name">Product 1</span>
+        </div>
+        <span class="item-price"></span>
+      </div>
+      <hr>
+      <div class="totals">
+        <p>Subtotal: <strong></strong></p>
+        <p>Shipping: <strong></strong></p>
+        <p class="total">Total: <strong></strong></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© 2025 BeClinic | Secure Checkout</p>
+      <div class="footer-links">
+        <a href="#">Privacy</a> • <a href="#">Terms</a> • <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="checkout.js" defer></script>
+</body>
+
+<script>
+  
+// === Load Cart from localStorage ===
+const cartData = localStorage.getItem('cartItems');
+const cartItems = cartData ? JSON.parse(cartData) : [];
+const orderSummary = document.querySelector('.order-summary');
+
+// === Display Cart Items in Checkout ===
+function loadCartItems() {
+  if (cartItems.length === 0) {
+    orderSummary.innerHTML = `<p>Your cart is empty. <a href="what_we_offer.html">Go back to shop</a></p>`;
+    return;
+  }
+
+  let html = `
+    <h3>Order Summary</h3>
+    <div class="items">`;
+
+  cartItems.forEach(item => {
+    html += `
+      <div class="item" data-price="${item.price}">
+        <img src="${item.img}" alt="${item.name}">
+        <span>${item.name}</span>
+        <span>$${item.price} × ${item.quantity}</span>
+      </div>`;
+  });
+
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const shipping = 10;
+  const total = subtotal + shipping;
+
+  html += `
+    </div>
+    <hr>
+    <div class="totals">
+      <p>Subtotal: <strong>$${subtotal.toFixed(2)}</strong></p>
+      <p>Shipping: <strong>$${shipping.toFixed(2)}</strong></p>
+      <p class="total">Total: <strong>$${total.toFixed(2)}</strong></p>
+    </div>
+  `;
+
+  orderSummary.innerHTML = html;
+}
+
+loadCartItems();
+
+// === Handle Form Submission ===
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  localStorage.removeItem('cartItems');
+window.location.href = "success.html";
+});
+
+</script>
+</html>
