@@ -152,9 +152,9 @@
       <h1 class="site-title">BECLINIC</h1>
     </div>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="../LabTask1/index.html">Home</a></li>
       <li><a href="what_we_offer.html" class="active">What We Offer</a></li>
-      <li><a href="../Assignment1/checkout.html">Cart</a></li>
+      <li><a href="#" id="navCartLink">Cart</a></li>
 
     </ul>
   </nav>
@@ -220,9 +220,8 @@
     <div id="cartItems"></div>
     <div class="cart-footer">
        
-        <a href="checkout.html" class="buy-btn w-100">Checkout</a>
+        <a href="../Assignement1/checkout.html" class="buy-btn w-100">Checkout</a>
     </div>
-  </div>
 
   <section class="footer">
     <p>© 2025 BeClinic | All Rights Reserved</p>
@@ -234,6 +233,7 @@
   const cartSidebar = document.getElementById('cartSidebar');
   const closeCartBtn = document.getElementById('closecart');
   const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+const navCartLink = document.getElementById('navCartLink');
 
   let cart = [];
 
@@ -261,6 +261,12 @@
   // Close cart
   closeCartBtn.addEventListener('click', () => {
     cartSidebar.classList.remove('open');
+  });
+
+  // Open cart from navbar
+  navCartLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    cartSidebar.classList.add('open');
   });
 
   // Update cart HTML
